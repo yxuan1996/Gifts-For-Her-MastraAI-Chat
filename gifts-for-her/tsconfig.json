@@ -23,7 +23,13 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "baseUrl": ".", // This makes the project root the base for path resolution
+    "paths": {
+      "@/components/*": ["./components/*"], // Example alias for components
+      "@/lib/*": ["./lib/*"],               // Example alias for library files
+      "@/*": ["./*"]                        // A common alias for the src directory
+    },  
   },
   "include": [
     "src/**/*",

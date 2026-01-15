@@ -109,6 +109,52 @@ We can then add memory to our agents within the agent file of each agent.
 
 Then, set the `POSTGRES_CONNECTION_STRING` environment variable.
 
+## Additional Libraries for NextJS
+- supabase ssr for auth
+- Styling (Tailwind, Lucide etc.)
+
+```
+npm install @supabase/ssr @supabase/supabase-js
+npm install class-variance-authority clsx tailwind-merge
+npm install lucide-react
+npm install -D tailwindcss postcss autoprefixer @tailwindcss/postcss
+npm install -D tailwindcss-animate
+```
+
+Configure the following environment variables:
+```
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key_here
+```
+
+Since we manually created next JS, we need to manually configure our tailwind config files as well. Create the following files:
+
+`postcss.config.mjs`
+
+```
+export default {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  }
+}
+```
+
+`tailwind.config.js`
+
+
+
+
+Add the following lines of code to `tsconfig.json` 
+
+```
+"baseUrl": ".", // This makes the project root the base for path resolution
+    "paths": {
+      "@/components/*": ["components/*"], // Example alias for components
+      "@/lib/*": ["lib/*"],               // Example alias for library files
+      "@/*": ["/*"]                        // A common alias for the src directory
+    },  
+```
+
 
 
 

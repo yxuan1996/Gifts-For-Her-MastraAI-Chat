@@ -160,7 +160,7 @@ Add the following lines of code to `tsconfig.json`
 ```
 
 
-## Singleton Pattern for Mastra instance
+## Singleton Pattern for Mastra instance (Not Implemented)
 - In development mode, NextJS uses Hot Reloads
 - Every time the app is reloaded, multiple instances of the Mastra instance is created
 
@@ -168,4 +168,7 @@ Add the following lines of code to `tsconfig.json`
 - When a new instance of Mastra is created, it is saved to the global object
 - Everytime the app reloads, it checks for an existing instance and uses it instead of creating a new one
 
-Note: We will remove te singleton pattern during production
+## Vercel Deployment
+- We need to remove all references to mastra.db (The local SQLite instance) before deployment
+
+

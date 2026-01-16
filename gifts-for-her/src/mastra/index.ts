@@ -12,15 +12,15 @@ const storage = new PostgresStore({
   connectionString: process.env.POSTGRES_CONNECTION_STRING,
 });
 
-// Implement Singleton pattern for Mastra instance
-// Global variable to hold the Mastra instance
-const globalForMastra = globalThis as unknown as {
-  mastra: Mastra | undefined;
-};
+// // Implement Singleton pattern for Mastra instance
+// // Global variable to hold the Mastra instance
+// const globalForMastra = globalThis as unknown as {
+//   mastra: Mastra | undefined;
+// };
 
 // Use existing instance if available, otherwise create a new one
 export const mastra = 
-  globalForMastra.mastra ??
+  // globalForMastra.mastra ??
   new Mastra({
   workflows: { weatherWorkflow },
   agents: { weatherAgent, recommendAgent },
@@ -44,7 +44,7 @@ export const mastra =
   },
 });
 
-// 3. In development, save the instance to the global object
-if (process.env.NODE_ENV !== "production") {
-  globalForMastra.mastra = mastra;
-}
+// // 3. In development, save the instance to the global object
+// if (process.env.NODE_ENV !== "production") {
+//   globalForMastra.mastra = mastra;
+// }

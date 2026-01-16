@@ -1,5 +1,8 @@
 # Development Notes
 
+Note to self: For future deployments, install the nextJS app first, then install mastra backend in the `app` directory. 
+When prompted, install mastra at the root directory `.` instead of `src`.
+
 ## Mastra Backend
 Start by installing Mastra
 ```
@@ -164,3 +167,5 @@ Add the following lines of code to `tsconfig.json`
 - We create a global object for Mastra
 - When a new instance of Mastra is created, it is saved to the global object
 - Everytime the app reloads, it checks for an existing instance and uses it instead of creating a new one
+
+Note: We will remove te singleton pattern during production

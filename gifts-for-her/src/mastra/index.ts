@@ -7,9 +7,9 @@ import { recommendAgent } from './agents/recommend-agent';
 import { toolCallAppropriatenessScorer, completenessScorer, translationScorer } from './scorers/weather-scorer';
 import { PostgresStore } from "@mastra/pg";
 
-const storage = new PostgresStore({
-  connectionString: process.env.POSTGRES_CONNECTION_STRING,
-});
+// const storage = new PostgresStore({
+//   connectionString: process.env.POSTGRES_CONNECTION_STRING,
+// });
 
 // // Implement Singleton pattern for Mastra instance
 // // Global variable to hold the Mastra instance
@@ -22,13 +22,13 @@ export const mastra =
   // globalForMastra.mastra ??
   new Mastra({
   workflows: { weatherWorkflow },
-  agents: { weatherAgent, recommendAgent },
+  agents: { recommendAgent },
   scorers: { toolCallAppropriatenessScorer, completenessScorer, translationScorer },
   // storage: new LibSQLStore({
   //   // stores observability, scores, ... into memory storage, if it needs to persist, change to file:../mastra.db
   //   url: ":memory:",
   // }),
-  storage: storage,
+  // storage: storage,
   logger: new PinoLogger({
     name: 'Mastra',
     level: 'info',

@@ -95,6 +95,8 @@ Then, set the `PINECONE_API_KEY` and `PINECONE_HOST` environment variable.
 We define our tools in the `src/mastra/tools` folder
 
 ## Configuring Memory
+
+### Postgres
 We install the memory package as well as the storage provider. In this case, we are using Postgres (Supabase)
 ```
 npm install @mastra/memory@latest @mastra/pg@latest
@@ -112,6 +114,21 @@ const storage = new PostgresStore({
 We can then add memory to our agents within the agent file of each agent.
 
 Then, set the `POSTGRES_CONNECTION_STRING` environment variable.
+
+### MongoDB
+If we are using MongoDB, install the following packages:
+```
+npm install @mastra/mongodb @mastra/memory@latest
+```
+
+Configure the environment variables:
+```
+MONGODB_URI=<your-connection-string>
+MONGODB_DB_NAME=<your-db-name>
+```
+
+[Adding memory to agents within the agent file for mongodb](https://mastra.ai/docs/memory/storage/memory-with-mongodb#usage-example )
+
 
 ## Additional Libraries for NextJS
 - supabase ssr for auth
@@ -170,5 +187,6 @@ Add the following lines of code to `tsconfig.json`
 
 ## Vercel Deployment
 - We need to remove all references to mastra.db (The local SQLite instance) before deployment
+- We remove all Postgres storage references and replace with MongoDB since there is a known bug with PostgresDB
 
 

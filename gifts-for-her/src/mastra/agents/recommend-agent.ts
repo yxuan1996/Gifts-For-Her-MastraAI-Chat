@@ -2,6 +2,7 @@ import { Agent } from "@mastra/core/agent";
 import { createAzure } from '@ai-sdk/azure';
 import { beautySearchTool } from "../tools/beauty-search-tool";
 import { Memory } from "@mastra/memory";
+import { MongoDBStore } from "@mastra/mongodb";
 
 
 const azure = createAzure({
@@ -18,9 +19,21 @@ export const recommendAgent = new Agent({
   Process queries using the provided context. Structure responses to be concise and relevant.
   `,
   tools: { beautySearchTool },
+  // memory: new Memory({
+  //   options: {
+  //     lastMessages: 20,
+  //   },
+  // }),
   memory: new Memory({
+    storage: new MongoDBStore({
+      url: process.env.MONGODB_URI!,
+      dbName: process.env.MONGODB_DB_NAME!,
+    }),
     options: {
-      lastMessages: 20,
+      threads: {
+        generateTitle: true,
+      },
     },
   }),
+
 });

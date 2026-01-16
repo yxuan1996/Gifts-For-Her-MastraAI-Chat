@@ -1,4 +1,5 @@
-# Installation
+# Development Notes
+
 ## Mastra Backend
 Start by installing Mastra
 ```
@@ -156,6 +157,10 @@ Add the following lines of code to `tsconfig.json`
 ```
 
 
+## Singleton Pattern for Mastra instance
+- In development mode, NextJS uses Hot Reloads
+- Every time the app is reloaded, multiple instances of the Mastra instance is created
 
-
-
+- We create a global object for Mastra
+- When a new instance of Mastra is created, it is saved to the global object
+- Everytime the app reloads, it checks for an existing instance and uses it instead of creating a new one

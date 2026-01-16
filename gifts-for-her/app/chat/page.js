@@ -57,14 +57,10 @@ export default function ChatPage() {
 
       const response = await askAgent(userMessage);
 
-      if (!response.ok) {
-        throw new Error(`AI Agent error: ${response.status}`)
-      }
-
-      const data = await response.json()
+      // const data = await response.json();
       setMessages((prev) => [
         ...prev,
-        { role: 'assistant', content: data.response },
+        { role: 'assistant', content: response.text },
       ])
     } catch (error) {
       console.error('Error:', error)

@@ -6,6 +6,8 @@ import { weatherAgent } from './agents/weather-agent';
 import { recommendAgent } from './agents/recommend-agent';
 import { toolCallAppropriatenessScorer, completenessScorer, translationScorer } from './scorers/weather-scorer';
 import { PostgresStore } from "@mastra/pg";
+// import { Observability } from "@mastra/observability";
+// import { LangSmithExporter } from "@mastra/langsmith";
 
 // const storage = new PostgresStore({
 //   connectionString: process.env.POSTGRES_CONNECTION_STRING,

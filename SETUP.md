@@ -189,4 +189,26 @@ Add the following lines of code to `tsconfig.json`
 - We need to remove all references to mastra.db (The local SQLite instance) before deployment
 - We remove all Postgres storage references and replace with MongoDB since there is a known bug with PostgresDB
 
+## Observability (Not Implemented)
+Not implemented as the syntax has changed from Mastra V1. We are using Mastra V0.
 
+Install the langsmith package
+```
+npm install @mastra/langsmith@0.1.3
+npm install @mastra/observability@'<1.0'
+```
+
+Configure environment variables:
+```
+# Required
+LANGSMITH_API_KEY=ls-xxxxxxxxxxxx
+
+# Optional
+LANGCHAIN_PROJECT=my-project  # Default project for traces
+```
+
+Import the relevant libraries in `index.ts`
+```TS
+import { Observability } from "@mastra/observability";
+import { LangSmithExporter } from "@mastra/langsmith";
+```
